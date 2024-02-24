@@ -1,5 +1,6 @@
 #import "AppDelegate.h"
 #import <React/RCTBundleURLProvider.h>
+#import "NormalBridgeModule.h"
 
 @implementation AppDelegate
 
