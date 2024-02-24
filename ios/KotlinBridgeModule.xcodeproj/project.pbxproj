@@ -14,7 +14,7 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-KotlinBridgeModule-KotlinBridgeModuleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-KotlinBridgeModule-KotlinBridgeModuleTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		A06976B82B8A59D500500D03 /* NormalBridgeModule.m in Sources */ = {isa = PBXBuildFile; fileRef = A06976B72B8A59D500500D03 /* NormalBridgeModule.m */; };
+		A06976B82B8A59D500500D03 /* NormalBridgeModule.mm in Sources */ = {isa = PBXBuildFile; fileRef = A06976B72B8A59D500500D03 /* NormalBridgeModule.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,7 +45,7 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = KotlinBridgeModule/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-KotlinBridgeModule-KotlinBridgeModuleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KotlinBridgeModule-KotlinBridgeModuleTests.release.xcconfig"; path = "Target Support Files/Pods-KotlinBridgeModule-KotlinBridgeModuleTests/Pods-KotlinBridgeModule-KotlinBridgeModuleTests.release.xcconfig"; sourceTree = "<group>"; };
 		A06976B62B8A59C400500D03 /* NormalBridgeModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NormalBridgeModule.h; sourceTree = "<group>"; };
-		A06976B72B8A59D500500D03 /* NormalBridgeModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NormalBridgeModule.m; sourceTree = "<group>"; };
+		A06976B72B8A59D500500D03 /* NormalBridgeModule.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = NormalBridgeModule.mm; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -96,7 +96,7 @@
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				A06976B62B8A59C400500D03 /* NormalBridgeModule.h */,
-				A06976B72B8A59D500500D03 /* NormalBridgeModule.m */,
+				A06976B72B8A59D500500D03 /* NormalBridgeModule.mm */,
 			);
 			name = KotlinBridgeModule;
 			sourceTree = "<group>";
@@ -397,7 +397,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A06976B82B8A59D500500D03 /* NormalBridgeModule.m in Sources */,
+				A06976B82B8A59D500500D03 /* NormalBridgeModule.mm in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
