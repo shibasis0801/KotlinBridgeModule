@@ -1,5 +1,6 @@
 package dev.shibasis.kotlin.bridge
 
+
 object KotlinBridgeModule {
     fun syncBlockingFunction() = "syncBlockingFunction"
     fun normalAsyncFunction(callback: (Any) -> Unit) {
