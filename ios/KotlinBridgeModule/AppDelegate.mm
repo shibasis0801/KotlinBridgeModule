@@ -1,6 +1,7 @@
 #import "AppDelegate.h"
 #import <React/RCTBundleURLProvider.h>
 #import "NormalBridgeModule.h"
+#import <kotlin_bridge/kotlin_bridge.h>
 
 @implementation AppDelegate
 

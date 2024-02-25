@@ -39,6 +39,8 @@ target 'KotlinBridgeModule' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
+  pod "kotlin_bridge", :path => "../android/kotlin-bridge"
+
   target 'KotlinBridgeModuleTests' do
     inherit! :complete
     # Pods for testing

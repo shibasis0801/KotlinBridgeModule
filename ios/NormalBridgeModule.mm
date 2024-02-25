@@ -7,25 +7,21 @@
 
 @implementation NormalBridgeModule
 void RCTRegisterModule(Class);
-+(NSString *)moduleName
-{
++(NSString *)moduleName {
   return @"NormalBridgeModule";
 }
-+(void)load
-{
++(void)load {
   RCTRegisterModule(self);
 }
 - (NSString *)syncBlockingFunction {
   return @"NormalBridgeModule";
 }
 
-- (void)normalAsyncFunction:(RCTResponseSenderBlock)callback
-{
+- (void)normalAsyncFunction:(RCTResponseSenderBlock)callback {
   callback(@[ @"Result from normalAsyncFunction" ]);
 }
 
-- (void)promiseFunction:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject
-{
+- (void)promiseFunction:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject {
   resolve(@"Result from promiseFunction");
 }
 
@@ -42,7 +38,6 @@ void RCTRegisterModule(Class);
   RCTMethodInfo *promiseMethodInfo = new RCTMethodInfo{.objcName = promiseFunctionSelector, .isSync = NO};
   id promiseMethod = [[RCTModuleMethod alloc] initWithExportedMethod:promiseMethodInfo moduleClass:[self class]];
 
-  
   return @[
     syncMethod,
     callbackMethod,
