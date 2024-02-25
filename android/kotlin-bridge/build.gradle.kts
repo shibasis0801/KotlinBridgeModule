@@ -18,6 +18,7 @@ kotlin {
 
         name = "kotlin_bridge"
         ios.deploymentTarget = "12"
+        podfile = file("../../ios/Podfile")
 
         framework {
             isStatic = true
