@@ -11,8 +11,17 @@
   // You can add your custom initial props in the dictionary below.
   // They will be passed down to the ViewController used by React Native.
   self.initialProps = @{};
-  
+
+  NSString *result = [[KotlinBridgeModule shared] syncBlockingFunction ];
+  NSLog(@"Result: %@", result);
+     
+
   return [super application:application didFinishLaunchingWithOptions:launchOptions];
+}
+
+- (NSArray<id<RCTBridgeModule>> *)extraModulesForBridge:(RCTBridge *)bridge
+{
+  return @[[DarwinBridgeModule new]];
 }
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge

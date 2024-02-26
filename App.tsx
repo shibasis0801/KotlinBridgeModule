@@ -7,8 +7,9 @@ import {
 } from 'react-native';
 
 import { NativeModules } from 'react-native';
-const { NormalBridgeModule } = NativeModules;
+const { NormalBridgeModule, DarwinBridgeModule } = NativeModules;
 console.log("NormalBridgeModule", NormalBridgeModule);
+console.log("DarwinBridgeModule", DarwinBridgeModule);
 
 const styles = StyleSheet.create({
   container: {
@@ -25,12 +26,12 @@ const styles = StyleSheet.create({
 function App(): React.JSX.Element {
   const [ callbackResult, setCallbackResult ] = useState('');
   useEffect(() => {
-    NormalBridgeModule?.normalAsyncFunction(setCallbackResult)
+    DarwinBridgeModule?.normalAsyncFunction(setCallbackResult)
   }, [])
 
   const [ promiseResult, setPromiseResult ] = useState('');
   useEffect(() => {
-    NormalBridgeModule?.promiseFunction().then(setPromiseResult)
+    DarwinBridgeModule?.promiseFunction().then(setPromiseResult)
   }, [])
 
 
@@ -39,7 +40,7 @@ function App(): React.JSX.Element {
       <View style={styles.container}>
         <View>
           <Text style={styles.text}> Sync Blocking Method </Text>
-          <Text style={styles.text}> {NormalBridgeModule?.syncBlockingFunction()} </Text>
+          <Text style={styles.text}> {DarwinBridgeModule?.syncBlockingFunction()} </Text>
         </View>
         <View>
           <Text style={styles.text}> Callback Method </Text>

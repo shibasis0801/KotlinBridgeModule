@@ -7,9 +7,21 @@ plugins {
 kotlin {
     jvmToolchain(17)
     android()
-    iosX64()
-    iosArm64()
-    iosSimulatorArm64()
+
+    listOf(
+//        iosX64(),
+//        iosArm64(),
+        iosSimulatorArm64()
+    ).forEach {
+        it.compilations.getByName("main").cinterops {
+            val react by creating {
+                packageName("dev.shibasis.kotlin.react")
+                defFile(file("cpp/kotlin_bridge.def"))
+                headers("cpp/KotlinReact.h")
+            }
+        }
+
+    }
 
     cocoapods {
         version = "1.0"
@@ -25,7 +37,18 @@ kotlin {
         }
     }
 
-    sourceSets {}
+    sourceSets {
+        val iosMain by creating
+//        val iosX64Main by getting {
+//            dependsOn(iosMain)
+//        }
+//        val iosArm64Main by getting {
+//            dependsOn(iosMain)
+//        }
+        val iosSimulatorArm64Main by getting {
+            dependsOn(iosMain)
+        }
+    }
 }
 
 android {
