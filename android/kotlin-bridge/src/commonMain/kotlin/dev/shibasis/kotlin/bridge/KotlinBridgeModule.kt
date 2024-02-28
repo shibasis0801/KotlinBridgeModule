@@ -5,7 +5,7 @@ import kotlin.native.ObjCName
 
 @OptIn(ExperimentalObjCName::class)
 @ObjCName("KotlinBridgeModule", exact = true)
-object KotlinBridgeModule {
+class KotlinBridgeModule {
     fun syncBlockingFunction() = "syncBlockingFunction"
     fun normalAsyncFunction(callback: (Any) -> Unit) {
         callback("normalAsyncFunction")

@@ -1,5 +1,8 @@
 package dev.shibasis.kotlin.bridge
 
+import dev.shibasis.kotlin.react.BridgeModuleProtocol
+import dev.shibasis.kotlin.react.BridgeModuleProtocolMeta
+import dev.shibasis.kotlin.react.RCTBridgeMethodProtocol
 import dev.shibasis.kotlin.react.RCTBridgeModuleProtocol
 import dev.shibasis.kotlin.react.RCTBridgeModuleProtocolMeta
 import dev.shibasis.kotlin.react.RCTMethodInfo
@@ -8,15 +11,19 @@ import dev.shibasis.kotlin.react.RCTPromiseRejectBlock
 import dev.shibasis.kotlin.react.RCTPromiseResolveBlock
 import dev.shibasis.kotlin.react.RCTResponseSenderBlock
 import kotlinx.cinterop.Arena
+import kotlinx.cinterop.ExportObjCClass
 import kotlinx.cinterop.alloc
 import kotlinx.cinterop.cstr
 import kotlinx.cinterop.ptr
 import platform.darwin.NSObject
 import kotlin.experimental.ExperimentalObjCName
+
+
+@ExportObjCClass
 @OptIn(ExperimentalObjCName::class)
 @ObjCName("DarwinBridgeModule", exact = true)
-class DarwinBridgeModule: NSObject(), RCTBridgeModuleProtocol {
-    companion object: NSObject(), RCTBridgeModuleProtocolMeta {
+class DarwinBridgeModule: NSObject(), BridgeModuleProtocol {
+    companion object: NSObject(), BridgeModuleProtocolMeta  {
         override fun moduleName() = "DarwinBridgeModule"
     }
     private val arena = Arena()
@@ -24,29 +31,19 @@ class DarwinBridgeModule: NSObject(), RCTBridgeModuleProtocol {
         arena.clear()
     }
 
-    init {
+    override fun syncBlockingFunction() = "Kotlin: syncBlockingFunction"
 
-    }
-
-    @OptIn(ExperimentalObjCName::class)
-    @ObjCName("syncBlockingFunction")
-    fun syncBlockingFunction() = "syncBlockingFunction"
-
-    @OptIn(ExperimentalObjCName::class)
-    @ObjCName("normalAsyncFunction")
-    fun normalAsyncFunction(callback: RCTResponseSenderBlock) {
+    override fun normalAsyncFunction(callback: RCTResponseSenderBlock) {
         if (callback != null)
-            callback(listOf("normalAsyncFunction"))
+            callback(listOf("Kotlin: normalAsyncFunction"))
     }
 
-    @OptIn(ExperimentalObjCName::class)
-    @ObjCName("promiseFunction")
-    fun promiseFunction(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
-        resolve?.invoke("promiseFunction")
+    override fun promiseFunction(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+        resolve?.invoke("Kotlin: promiseFunction")
         // reject("promiseFunctionError")
     }
 
-    override fun methodsToExport(): List<*> {
+    override fun methodsToExport(): List<RCTBridgeMethodProtocol> {
         val syncMethodInfo = arena.alloc<RCTMethodInfo>()
         syncMethodInfo.isSync = true
         syncMethodInfo.objcName = "syncBlockingFunction".cstr.getPointer(arena)
@@ -70,4 +67,5 @@ class DarwinBridgeModule: NSObject(), RCTBridgeModuleProtocol {
     }
 }
 
-fun getModule(): RCTBridgeModuleProtocol = DarwinBridgeModule() as RCTBridgeModuleProtocol
+fun getModule(): RCTBridgeModuleProtocol = DarwinBridgeModule()
+

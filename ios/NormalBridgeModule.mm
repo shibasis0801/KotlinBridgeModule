@@ -1,8 +1,4 @@
 #import "NormalBridgeModule.h"
-#import <React/RCTBridge.h>
-#import <React/RCTBridge+Private.h>
-#import <React/RCTBridgeMethod.h>
-#import <React/RCTModuleMethod.h>
 
 
 @implementation NormalBridgeModule
